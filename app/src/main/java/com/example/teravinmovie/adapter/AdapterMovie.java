@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.teravinmovie.MainActivity;
 import com.example.teravinmovie.R;
+import com.example.teravinmovie.model.DataItem;
 import com.example.teravinmovie.model.ResultsItem;
 
 import java.util.List;
@@ -18,12 +19,14 @@ public class AdapterMovie extends RecyclerView.Adapter<AdapterMovie.ViewHolder> 
 
     Context ctx;
 
-    List<ResultsItem> ListDataMovie;
+    List<DataItem> ListDataMovie;
 
-    public AdapterMovie(Context ctx, List<ResultsItem> listDataMovie) {
+    public AdapterMovie(Context ctx, List<DataItem> listDataMovie) {
         this.ctx = ctx;
         ListDataMovie = listDataMovie;
     }
+
+
 
     @NonNull
     @Override
@@ -36,8 +39,8 @@ public class AdapterMovie extends RecyclerView.Adapter<AdapterMovie.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull AdapterMovie.ViewHolder viewHolder, int i) {
 
-        final String judul = ListDataMovie.get(i).getTitle();
-        final String tanggal = ListDataMovie.get(i).getReleaseDate();
+        final String judul = ListDataMovie.get(i).getJudul();
+        final String tanggal = ListDataMovie.get(i).getTanggal();
 
         viewHolder.tvjudul.setText(judul);
         viewHolder.tvtanggal.setText(tanggal);

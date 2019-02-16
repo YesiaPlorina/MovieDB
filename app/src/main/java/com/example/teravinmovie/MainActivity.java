@@ -6,6 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.teravinmovie.adapter.AdapterMovie;
+import com.example.teravinmovie.model.DataItem;
+import com.example.teravinmovie.model.ResponseFilm;
 import com.example.teravinmovie.model.ResponseMovie;
 import com.example.teravinmovie.model.ResultsItem;
 import com.example.teravinmovie.network.ConfigRetrofit;
@@ -33,30 +35,31 @@ public class MainActivity extends AppCompatActivity {
 
     private void sendRequest() {
 
-        ConfigRetrofit.getInstanc().getDataMovie().enqueue(new Callback<ResponseMovie>() {
+        ConfigRetrofit.getInstanc().getDataMovie().enqueue(new Callback<ResponseFilm>() {
             @Override
-            public void onResponse(Call<ResponseMovie> call, Response<ResponseMovie> response) {
-
-                if (response != null) {
-                    List<ResultsItem> ListDataMovie = response.body().getResults();
+            public void onResponse(Call<ResponseFilm> call, Response<ResponseFilm> response) {
+                if (response!= null){
+                    List<DataItem>ListDataMovie= response.body().getData();
                     setUpListMovie(ListDataMovie);
                 }
             }
 
             @Override
-            public void onFailure(Call<ResponseMovie> call, Throwable t) {
+            public void onFailure(Call<ResponseFilm> call, Throwable t) {
 
             }
         });
+
+
+
     }
 
-    private void setUpListMovie(List<ResultsItem> listDataMovie) {
+    private void setUpListMovie(List<DataItem> listDataMovie) {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
-        AdapterMovie adapter = new AdapterMovie(this, listDataMovie);
-        recyclerView.setAdapter(adapter);
+        AdapterMovie adapterMovie = new AdapterMovie(this, listDataMovie);
+        recyclerView.setAdapter(adapterMovie);
     }
-
 }
 
