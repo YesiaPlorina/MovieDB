@@ -11,9 +11,9 @@
 
 
         <ImageView
-            android:id="@+id/iv_berita"
+            android:id="@+id/iv_movie"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="500dp"
             android:scaleType="fitXY"
            />
 
@@ -41,6 +41,12 @@
                 android:layout_marginLeft="5dp"
                 android:layout_weight="5"
                 android:text="Tanggal" />
+            <TextView
+                android:id="@+id/tv_ratting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:text="Rating" />
 
 
 
