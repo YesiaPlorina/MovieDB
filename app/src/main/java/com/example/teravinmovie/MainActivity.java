@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         swipeRefreshLayout = findViewById(R.id.swipe);
 
         sendRequest();
-
         swipeRefreshLayout.setColorScheme(
                 android.R.color.holo_blue_bright);
 
